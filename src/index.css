@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-text1 font-sans;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded; }
+}
+
+@layer components {
+  .input-base {
+    @apply w-full bg-surface2 border border-border rounded-lg px-3.5 py-2.5
+           text-text1 text-sm font-sans outline-none
+           transition-all duration-150
+           focus:border-accent focus:ring-2 focus:ring-accent/10
+           placeholder:text-text3;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border-none
+           cursor-pointer font-sans text-sm font-medium transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary  { @apply bg-accent text-bg hover:bg-accent2; }
+  .btn-ghost    { @apply bg-transparent text-text2 border border-border hover:bg-surface2 hover:text-text1; }
+  .btn-danger   { @apply bg-transparent text-danger border border-transparent hover:bg-danger/10 hover:border-danger; }
+  .btn-sm       { @apply px-3 py-1.5 text-xs; }
+  .btn-full     { @apply w-full justify-center; }
+
+  .card {
+    @apply bg-surface border border-border rounded-2xl;
+  }
+}
+
+/* Note card hover reveal */
+.note-card .note-actions { opacity: 0; transition: opacity 0.15s; }
+.note-card:hover .note-actions { opacity: 1; }
+
+/* Animations */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes snackIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.animate-slide-down { animation: slideDown 0.2s ease; }
+.animate-fade-in    { animation: fadeIn 0.15s ease; }
+.animate-scale-in   { animation: scaleIn 0.2s ease; }
+.animate-snack-in   { animation: snackIn 0.25s ease; }
