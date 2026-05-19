@@ -4,6 +4,8 @@ import type { Product } from '../types/productModels';
 
 const EXPENSIVE_PRICE_THRESHOLD = 100;
 
+//DTOs (Data Transfer Objects) are used for transferring data between different layers of an application, while Models represent the business logic and structure of the data within the application.
+
 export function mapProductDtoToModel(dto: ProductDto): Product {
     return {
         id: dto.id,
