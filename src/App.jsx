@@ -1,12 +1,13 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Nav            from '@/components/Nav'
+import Nav from '@/components/Nav'
 import ProtectedRoute from '@/components/ProtectedRoute'
+import TestTsx from './TestTsx'
 
 // Code-split each page — they're only downloaded when navigated to
-const LoginPage   = lazy(() => import('@/pages/LoginPage'))
-const SignupPage  = lazy(() => import('@/pages/SignupPage'))
-const NotesPage   = lazy(() => import('@/pages/NotesPage'))
+const LoginPage = lazy(() => import('@/pages/LoginPage'))
+const SignupPage = lazy(() => import('@/pages/SignupPage'))
+const NotesPage = lazy(() => import('@/pages/NotesPage'))
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'))
 
 function PageLoader() {
@@ -21,10 +22,11 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Nav />
+      <TestTsx title='TypeScriptCount' />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           {/* Public routes */}
-          <Route path="/login"  element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
           {/* Protected routes */}
