@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useForm } from '@/features/notes/hooks/useForm'
 import useAuthStore from '@/store/authStore'
-import { useForm }  from '@/hooks/useForm'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const RULES = {
-  name:     v => !v.trim()           && 'Name is required',
-  email:    v => !v.includes('@')    && 'Enter a valid email address',
-  password: v => v.length < 8       && 'Password must be at least 8 characters',
+  name: v => !v.trim() && 'Name is required',
+  email: v => !v.includes('@') && 'Enter a valid email address',
+  password: v => v.length < 8 && 'Password must be at least 8 characters',
 }
 
 export default function SignupPage() {
-  const signup   = useAuthStore(s => s.signup)
+  const signup = useAuthStore(s => s.signup)
   const navigate = useNavigate()
 
   const { values, errors, set, validate } = useForm({ name: '', email: '', password: '' }, RULES)
-  const [loading,   setLoading]   = useState(false)
+  const [loading, setLoading] = useState(false)
   const [serverErr, setServerErr] = useState('')
 
   const handleSubmit = async () => {
@@ -44,9 +44,9 @@ export default function SignupPage() {
         )}
 
         {[
-          { key: 'name',     label: 'Full name', type: 'text',     placeholder: 'Alex Mercer' },
-          { key: 'email',    label: 'Email',     type: 'email',    placeholder: 'you@example.com' },
-          { key: 'password', label: 'Password',  type: 'password', placeholder: 'min 8 characters' },
+          { key: 'name', label: 'Full name', type: 'text', placeholder: 'Alex Mercer' },
+          { key: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
+          { key: 'password', label: 'Password', type: 'password', placeholder: 'min 8 characters' },
         ].map(({ key, label, type, placeholder }) => (
           <div key={key} className="mb-4">
             <label className="block text-[11px] font-medium text-text2 uppercase tracking-widest mb-1.5">

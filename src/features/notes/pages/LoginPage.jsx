@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useForm } from '@/features/notes/hooks/useForm'
 import useAuthStore from '@/store/authStore'
-import { useForm }  from '@/hooks/useForm'
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const RULES = {
-  email:    v => !v.includes('@')   && 'Enter a valid email address',
-  password: v => v.length < 6       && 'Password must be at least 6 characters',
+  email: v => !v.includes('@') && 'Enter a valid email address',
+  password: v => v.length < 6 && 'Password must be at least 6 characters',
 }
 
 export default function LoginPage() {
-  const login    = useAuthStore(s => s.login)
+  const login = useAuthStore(s => s.login)
   const navigate = useNavigate()
   const location = useLocation()
-  const from     = location.state?.from?.pathname ?? '/notes'
+  const from = location.state?.from?.pathname ?? '/notes'
 
   const { values, errors, set, validate } = useForm({ email: 'demo@notes.app', password: 'Demo1234!' }, RULES)
-  const [loading,    setLoading]    = useState(false)
-  const [serverErr,  setServerErr]  = useState('')
+  const [loading, setLoading] = useState(false)
+  const [serverErr, setServerErr] = useState('')
 
   const handleSubmit = async () => {
     if (!validate()) return
