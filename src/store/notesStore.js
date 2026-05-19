@@ -4,13 +4,13 @@
  * Handles all notes state with optimistic updates + rollback.
  * Uses a flat array + immer-style manual updates (no immer dep needed).
  */
+import { apiCreateNote, apiDeleteNote, apiGetNotes, apiUpdateNote } from '@/features/notes/lib/api'
 import { create } from 'zustand'
-import { apiGetNotes, apiCreateNote, apiUpdateNote, apiDeleteNote } from '@/lib/api'
 
 const useNotesStore = create((set, get) => ({
-  notes:   [],
+  notes: [],
   loading: true,
-  error:   null,
+  error: null,
 
   // ── Load ──────────────────────────────────────────────────────────────
   fetchNotes: async (userId) => {
@@ -25,7 +25,7 @@ const useNotesStore = create((set, get) => ({
 
   // ── Create (optimistic) ───────────────────────────────────────────────
   addNote: async (userId, data) => {
-    const tempId   = `temp-${Date.now()}`
+    const tempId = `temp-${Date.now()}`
     const optimistic = { id: tempId, userId, ...data, createdAt: Date.now(), updatedAt: Date.now(), _optimistic: true }
 
     set(s => ({ notes: [optimistic, ...s.notes] }))

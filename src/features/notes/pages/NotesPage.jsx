@@ -1,16 +1,16 @@
-import { useState, useMemo, useCallback, useDeferredValue } from 'react'
-import { useNotes }   from '@/hooks/useNotes'
-import NoteCard        from '@/components/NoteCard'
-import NoteForm        from '@/components/NoteForm'
-import EditModal       from '@/components/EditModal'
-import Snackbar        from '@/components/Snackbar'
+import EditModal from '@/features/notes/components/EditModal'
+import NoteCard from '@/features/notes/components/NoteCard'
+import NoteForm from '@/features/notes/components/NoteForm'
+import Snackbar from '@/features/notes/components/Snackbar'
+import { useNotes } from '@/features/notes/hooks/useNotes'
+import { useCallback, useDeferredValue, useMemo, useState } from 'react'
 
 export default function NotesPage() {
   const { notes, loading, snack, isPending, handleAdd, handleUpdate, handleDelete } = useNotes()
 
   const [showForm, setShowForm] = useState(false)
-  const [editing,  setEditing]  = useState(null)
-  const [query,    setQuery]    = useState('')
+  const [editing, setEditing] = useState(null)
+  const [query, setQuery] = useState('')
 
   // useDeferredValue keeps the search input instant while the filtered
   // list rendering is allowed to lag behind (non-blocking UI update)
@@ -130,7 +130,7 @@ function EmptyState({ hasQuery }) {
 function SearchIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
     </svg>
   )
@@ -139,7 +139,7 @@ function SearchIcon({ className }) {
 function FileIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
     </svg>

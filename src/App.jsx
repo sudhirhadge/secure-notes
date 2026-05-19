@@ -1,14 +1,14 @@
+import Nav from '@/features/notes/components/Nav'
+import ProtectedRoute from '@/features/notes/components/ProtectedRoute'
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Nav from '@/components/Nav'
-import ProtectedRoute from '@/components/ProtectedRoute'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import TestTsx from './TestTsx'
 
 // Code-split each page — they're only downloaded when navigated to
-const LoginPage = lazy(() => import('@/pages/LoginPage'))
-const SignupPage = lazy(() => import('@/pages/SignupPage'))
-const NotesPage = lazy(() => import('@/pages/NotesPage'))
-const ProfilePage = lazy(() => import('@/pages/ProfilePage'))
+const LoginPage = lazy(() => import('@/features/notes/pages/LoginPage'))
+const SignupPage = lazy(() => import('@/features/notes/pages/SignupPage'))
+const NotesPage = lazy(() => import('@/features/notes/pages/NotesPage'))
+const ProfilePage = lazy(() => import('@/features/notes/pages/ProfilePage'))
 
 function PageLoader() {
   return (

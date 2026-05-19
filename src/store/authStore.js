@@ -8,14 +8,14 @@
  * In production, store the JWT in an HttpOnly cookie and keep
  * only non-sensitive user metadata (name, email) in JS-land.
  */
+import { apiLogin, apiSignup } from '@/features/notes/lib/api'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { apiLogin, apiSignup } from '@/lib/api'
 
 const useAuthStore = create(
   persist(
     (set) => ({
-      user:  null,
+      user: null,
       token: null,
 
       login: async (email, password) => {
