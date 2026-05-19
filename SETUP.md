@@ -257,3 +257,68 @@ Add a `_redirects` file in `public/`:
 - [ ] Add a settings page (theme toggle, font size)
 - [ ] Write tests with Vitest + React Testing Library
 - [ ] Migrate auth to HttpOnly cookies via a thin Express/Next.js API layer
+
+# — 19 May 2026
+
+## New Frontend Folder Structure
+
+```txt
+src/
+  routes/
+    AppRouter.tsx
+    AppLayout.tsx
+
+  core/
+    api/
+      apiClient.ts
+    constants/
+      routes.ts
+      query.ts
+    errors/
+      ApiError.ts
+      ErrorBoundary.tsx
+    query/
+      queryClient.ts
+      queryKeys.ts
+    utils/
+      types.ts
+
+  features/
+    products/
+      api/
+        productsApi.ts
+      hooks/
+        useProducts.ts
+        useProduct.ts
+        useUpdateProduct.ts
+      components/
+        ProductsToolbar.tsx
+        ProductsTable.tsx
+        ProductCard.tsx
+      pages/
+        ProductsListPage.tsx
+        ProductDetailsPage.tsx
+      query/
+        productsKeys.ts
+      types/
+        productDto.ts
+        productModels.ts
+      utils/
+        productMappers.ts
+
+  shared/
+    components/
+      Pagination.tsx
+      SkeletonLoader.tsx
+      LayoutContainer.tsx
+    hooks/
+      useDebouncedValue.ts
+    utils/
+      classNames.ts
+
+  providers/
+    AppProviders.tsx
+    QueryProvider.tsx
+
+main.tsx
+index.css
