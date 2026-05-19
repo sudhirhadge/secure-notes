@@ -6,3 +6,16 @@ export const productsKeys = {
     details: () => [...productsKeys.all, 'detail'] as const,
     detail: (id: number | string) => [...productsKeys.details(), id] as const,
 };
+
+/*
+Big architectural benefit
+
+This pattern helps with:
+
+centralized cache management
+no duplicate keys
+safer invalidation
+scalable large apps
+autocomplete support
+fewer typo bugs
+*/
