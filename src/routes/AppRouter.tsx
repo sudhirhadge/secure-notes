@@ -1,4 +1,3 @@
-import { routes } from '@/core/constants/routes';
 import React from 'react';
 import {
     createBrowserRouter,
@@ -6,47 +5,71 @@ import {
     Route,
     RouterProvider,
 } from 'react-router-dom';
+import { routes } from '../core/constants/routes';
 import { ErrorBoundaryRoot } from '../core/errors/ErrorBoundary';
 import { AppLayout } from './AppLayout';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const ProductsListPage = React.lazy(
-    () => import('@/features/products/pages/ProductsListPage'),
+    () => import('../features/products/pages/ProductsListPage'),
 );
 const ProductDetailsPage = React.lazy(
-    () => import('@/features/products/pages/ProductDetailsPage'),
+    () => import('../features/products/pages/ProductDetailsPage'),
+);
+const LoginPage = React.lazy(
+    () => import('@/features/auth/pages/LoginPage'),
+);
+const RegisterPage = React.lazy(
+    () => import('@/features/auth/pages/RegisterPage'),
 );
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route
-            path={routes.root}
-            element={<AppLayout />}
-            errorElement={<ErrorBoundaryRoot />}
-        >
+        <Route element={<AppLayout />} errorElement={<ErrorBoundaryRoot />}>
             <Route
-                index
+                path={routes.auth.login}
                 element={
                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <ProductsListPage />
+                        <LoginPage />
                     </React.Suspense>
                 }
             />
             <Route
-                path={routes.products.list}
+                path={routes.auth.register}
                 element={
                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <ProductsListPage />
+                        <RegisterPage />
                     </React.Suspense>
                 }
             />
-            <Route
-                path={routes.products.detail}
-                element={
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                        <ProductDetailsPage />
-                    </React.Suspense>
-                }
-            />
+
+            {/* Protected area */}
+            <Route element={<ProtectedRoute />}>
+                <Route
+                    index
+                    element={
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <ProductsListPage />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path={routes.products.list}
+                    element={
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <ProductsListPage />
+                        </React.Suspense>
+                    }
+                />
+                <Route
+                    path={routes.products.detail}
+                    element={
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <ProductDetailsPage />
+                        </React.Suspense>
+                    }
+                />
+            </Route>
         </Route>,
     ),
 );

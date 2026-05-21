@@ -46,5 +46,6 @@ export async function updateProductApi(
         method: 'PATCH',
         url: `${PRODUCTS_BASE_PATH}/${id}`,
         body: payload,
+        auth: true,
     });
 }
