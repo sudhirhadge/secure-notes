@@ -1,8 +1,9 @@
 import { LayoutContainer } from '@/shared/components/LayoutContainer';
+import Nav from '@/shared/components/Nav';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-// Suppose header , navbar needs a data which is also eeed in say feature1 (say homepage) and feature2 (say product details page), then we can fetch that data here in AppLayout and pass it down via context or props to header, navbar and also to feature1 and feature2. 
+// Suppose header , navbar needs a data which is also need in say feature1 (say homepage) and feature2 (say product details page), then we can fetch that data here in AppLayout and pass it down via context or props to header, navbar and also to feature1 and feature2. 
 // This way we avoid fetching the same data multiple times in different features and also we have a single source of truth for that data in our app.
 // We might fetch it via custom hooks which internally uses react-query or any data fetching library, so that we can benefit from caching, deduplication and other features of that library.
 
@@ -14,11 +15,7 @@ import { Outlet } from 'react-router-dom';
 export const AppLayout: React.FC = () => {
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
-            <header className="border-b bg-white">
-                <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-                    <h1 className="text-lg font-semibold tracking-tight">Products Console</h1>
-                </div>
-            </header>
+            <Nav />
             <main className="py-6">
                 <LayoutContainer>
                     <Outlet />
