@@ -2,6 +2,7 @@ import React from 'react';
 import {
     createBrowserRouter,
     createRoutesFromElements,
+    Navigate,
     Route,
     RouterProvider,
 } from 'react-router-dom';
@@ -19,8 +20,11 @@ const ProductDetailsPage = React.lazy(
 const LoginPage = React.lazy(
     () => import('@/features/auth/pages/LoginPage'),
 );
-const RegisterPage = React.lazy(
-    () => import('@/features/auth/pages/RegisterPage'),
+const SignupPage = React.lazy(
+    () => import('@/features/auth/pages/SignupPage'),
+);
+const NotesPage = React.lazy(
+    () => import('@/features/notes/pages/NotesPage'),
 );
 
 const router = createBrowserRouter(
@@ -30,6 +34,7 @@ const router = createBrowserRouter(
                 path={routes.auth.login}
                 element={
                     <React.Suspense fallback={<div>Loading...</div>}>
+                        {/* <LoginPage /> */}
                         <LoginPage />
                     </React.Suspense>
                 }
@@ -38,7 +43,8 @@ const router = createBrowserRouter(
                 path={routes.auth.register}
                 element={
                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <RegisterPage />
+                        {/* <RegisterPage /> */}
+                        <SignupPage />
                     </React.Suspense>
                 }
             />
@@ -47,12 +53,13 @@ const router = createBrowserRouter(
             <Route element={<ProtectedRoute />}>
                 <Route
                     index
+                    // path={routes.notes.notes}
                     element={
                         <React.Suspense fallback={<div>Loading...</div>}>
-                            <ProductsListPage />
+                            <NotesPage />
                         </React.Suspense>
                     }
-                />
+                /> {/* index -  Default child route */}
                 <Route
                     path={routes.products.list}
                     element={
@@ -70,6 +77,8 @@ const router = createBrowserRouter(
                     }
                 />
             </Route>
+            {/* Fallback */}
+            <Route path="*" element={<Navigate to="/notes" replace />} />
         </Route>,
     ),
 );

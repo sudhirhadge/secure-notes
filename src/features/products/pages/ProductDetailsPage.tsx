@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SkeletonLoader } from '../../../shared/components/SkeletonLoader';
 import { ProductCard } from '../components/ProductCard';
+import { SkeletonLoader } from '../components/SkeletonLoader';
 import { useProduct } from '../hooks/useProduct';
 import { useUpdateProduct } from '../hooks/useUpdateProduct';
 

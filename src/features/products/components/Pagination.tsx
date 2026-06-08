@@ -1,6 +1,6 @@
 // src/shared/components/Pagination.tsx
+import { classNames } from '@/shared/utils/classNames';
 import React from 'react';
-import { classNames } from '../utils/classNames';
 
 interface PaginationProps {
     page: number;
