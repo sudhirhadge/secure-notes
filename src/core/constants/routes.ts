@@ -9,4 +9,7 @@ export const routes = {
         list: '/products',
         detail: '/products/:id',
     },
+    notes: {
+        notes: '/notes',
+    },
 } as const;
