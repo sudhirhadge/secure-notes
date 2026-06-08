@@ -1,6 +1,6 @@
 // src/shared/components/SkeletonLoader.tsx
 import React from 'react';
-import { classNames } from '../utils/classNames';
+import { classNames } from '../../../shared/utils/classNames';
 
 interface SkeletonLoaderProps {
     lines?: number;
