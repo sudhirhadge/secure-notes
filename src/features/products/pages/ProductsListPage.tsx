@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Pagination } from '../../../shared/components/Pagination';
-import { SkeletonLoader } from '../../../shared/components/SkeletonLoader';
+import { Pagination } from '../components/Pagination';
 import { ProductsTable } from '../components/ProductsTable';
 import { ProductsToolbar } from '../components/ProductsToolbar';
+import { SkeletonLoader } from '../components/SkeletonLoader';
 import { useProducts } from '../hooks/useProducts';
 
 const DEFAULT_PAGE_SIZE = 10;
