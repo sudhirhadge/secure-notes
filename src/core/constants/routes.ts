@@ -10,6 +10,6 @@ export const routes = {
         detail: '/products/:id',
     },
     notes: {
-        notes: '/notes',
+        // notes: '/notes',
     },
 } as const;

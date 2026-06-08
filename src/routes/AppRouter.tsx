@@ -52,13 +52,14 @@ const router = createBrowserRouter(
             {/* Protected area */}
             <Route element={<ProtectedRoute />}>
                 <Route
-                    path={routes.notes.notes}
+                    index
+                    // path={routes.notes.notes}
                     element={
                         <React.Suspense fallback={<div>Loading...</div>}>
                             <NotesPage />
                         </React.Suspense>
                     }
-                />
+                /> {/* index -  Default child route */}
                 <Route
                     path={routes.products.list}
                     element={
