@@ -1,3 +1,4 @@
+import ProfilePage from '@/features/notes/pages/ProfilePage';
 import React from 'react';
 import {
     createBrowserRouter,
@@ -60,6 +61,24 @@ const router = createBrowserRouter(
                         </React.Suspense>
                     }
                 /> {/* index -  Default child route */}
+                <Route
+                    path={routes.notes.notes}
+                    element={
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <NotesPage />
+                        </React.Suspense>
+                    }
+                />
+
+                <Route
+                    path={routes.user.profile}
+                    element={
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <ProfilePage />
+                        </React.Suspense>
+                    }
+                />
+
                 <Route
                     path={routes.products.list}
                     element={
