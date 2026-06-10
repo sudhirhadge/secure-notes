@@ -39,6 +39,9 @@ export default memo(function Nav() {
             <NavLink to="/profile" className={linkClass}>
               Profile
             </NavLink>
+            <NavLink to="/products" className={linkClass}>
+              Products
+            </NavLink>
             <Avatar name={user.name} onClick={() => navigate("/profile")} />
             <button className="btn btn-ghost btn-sm" onClick={handleLogout}>
               Sign out
