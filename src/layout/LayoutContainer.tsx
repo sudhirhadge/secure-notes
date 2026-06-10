@@ -6,5 +6,5 @@ interface LayoutContainerProps {
 }
 
 export const LayoutContainer: React.FC<LayoutContainerProps> = ({ children }) => {
-    return <div className="mx-auto max-w-6xl px-4">{children}</div>;
+    return <div className="mx-auto max-w-6xl px-4 flex flex-col">{children}</div>;
 };

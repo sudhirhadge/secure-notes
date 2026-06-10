@@ -1,5 +1,8 @@
 export const routes = {
     root: '/',
+    user: {
+        profile: '/profile',
+    },
     auth: {
         login: '/login',
         register: '/register',
@@ -10,6 +13,6 @@ export const routes = {
         detail: '/products/:id',
     },
     notes: {
-        // notes: '/notes',
+        notes: '/notes',
     },
 } as const;

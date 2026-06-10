@@ -1,5 +1,5 @@
 import ProtectedRoute from '@/features/auth/components/ProtectedRoute'
-import Nav from '@/shared/components/Nav'
+import Nav from '@/layout/Nav'
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/features/auth/pages/SignupPage'))
 const NotesPage = lazy(() => import('@/features/notes/pages/NotesPage'))
-const ProfilePage = lazy(() => import('@/features/notes/pages/ProfilePage'))
+const ProfilePage = lazy(() => import('@/features/users/pages/ProfilePage'))
 
 function PageLoader() {
   return (

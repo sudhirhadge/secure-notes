@@ -1,5 +1,5 @@
-import { LayoutContainer } from '@/shared/components/LayoutContainer';
-import Nav from '@/shared/components/Nav';
+import { LayoutContainer } from '@/layout/LayoutContainer';
+import Nav from '@/layout/Nav';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
