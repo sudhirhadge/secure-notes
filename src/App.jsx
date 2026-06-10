@@ -1,5 +1,5 @@
 import ProtectedRoute from '@/features/auth/components/ProtectedRoute'
-import Nav from '@/shared/components/Nav'
+import Nav from '@/layout/Nav'
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
