@@ -1,4 +1,4 @@
-import ProfilePage from '@/features/notes/pages/ProfilePage';
+import ProfilePage from '@/features/users/pages/ProfilePage';
 import React from 'react';
 import {
     createBrowserRouter,
